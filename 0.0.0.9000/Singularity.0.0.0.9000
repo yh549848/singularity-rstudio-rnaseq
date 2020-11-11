@@ -19,6 +19,7 @@ From: nickjer/singularity-rstudio:3.6.2
   R -e 'install.packages("devtools")' && \
   R -e 'devtools::install_github("pachterlab/sleuth@v0.30.0")'
   ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin
+  ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
 # Install Other packages
 %post
