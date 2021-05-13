@@ -1,4 +1,4 @@
-# Rstudio server with RNA-seq DE analysis packages
+# Rstudio server with RNA-seq DE analysis package(s)
 
 This container was build based on [nickjer/singularity-rstudio:3.6.2](https://github.com/nickjer/singularity-rstudio).
 
@@ -8,6 +8,7 @@ This container was build based on [nickjer/singularity-rstudio:3.6.2](https://gi
 - ballgown
 - DESeq2
 - EBSeq
+- edgeR
 - polyester
 - sleuth
 - tximport
@@ -17,7 +18,7 @@ This container was build based on [nickjer/singularity-rstudio:3.6.2](https://gi
 ## Build
 
 ```bash
-sudo singularity build singularity-rstudio-rnaseqde.simg Singularity
+sudo singularity build rstudio-rnaseqde.sif Singularity
 ```
 
 
@@ -27,7 +28,7 @@ sudo singularity build singularity-rstudio-rnaseqde.simg Singularity
 1. Set password
 
 ```bash
-export RSTUDIO_PASSWORD=XXXXXXXX
+echo 'export RSTUDIO_PASSWORD=XXXXXXXX' >> $HOME/.bashrc
 ```
 
 2. Run Rstudio server
@@ -35,7 +36,7 @@ export RSTUDIO_PASSWORD=XXXXXXXX
    (a) Run on localhost
 
     ```bash
-    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run singularity-rstudio-rnaseqde.simg \
+    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-rnaseqde.sif \
     --auth-none 0 \
     --auth-pam-helper rstudio_auth
     --www-port 8787
@@ -45,17 +46,18 @@ export RSTUDIO_PASSWORD=XXXXXXXX
    @NIG supercomputer (login node)
 
    ```bash
-    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run singularity-rstudio-rnaseqde.simg \
+    RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-rnaseqde.sif \
     --auth-none 0 \
     --auth-pam-helper rstudio_auth
     --www-port 58787 # MUST specify an unused port
    ```
    @localhost
+
    ```{bash}
    ssh -fNL 8787:${hostname}:58787 ${user}@gw.ddbj.nig.ac.jp
    ```
 
 3. Open [https:/localhost:8787]([https:/localhost:8787])
 
-4. Enter Execution user and `RSTUDIO_PASSWORD`
+4. Enter execution user ID and `RSTUDIO_PASSWORD`
 
