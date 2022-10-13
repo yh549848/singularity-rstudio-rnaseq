@@ -38,7 +38,7 @@ echo 'export RSTUDIO_PASSWORD=XXXXXXXX' >> $HOME/.bashrc
     ```bash
     RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-rnaseqde.sif \
     --auth-none 0 \
-    --auth-pam-helper rstudio_auth
+    --auth-pam-helper rstudio_auth \
     --www-port 8787
     ```
    (b) Run on NIG supercomputer
@@ -48,7 +48,7 @@ echo 'export RSTUDIO_PASSWORD=XXXXXXXX' >> $HOME/.bashrc
    ```bash
     RSTUDIO_PASSWORD=${RSTUDIO_PASSWORD} singularity run rstudio-rnaseqde.sif \
     --auth-none 0 \
-    --auth-pam-helper rstudio_auth
+    --auth-pam-helper rstudio_auth \
     --www-port 58787 # MUST specify an unused port
    ```
    @localhost

@@ -15,14 +15,20 @@ From: yh549848/r/rstudio:1.2.5042r405
 %post
   R -e 'install.packages("BiocManager")' && \
   R -e 'BiocManager::install(version = "3.12")' && \
-  R -e 'BiocManager::install("rtracklayer")' && \
+  R -e 'BiocManager::install("AnnotationDbi")' && \
+  R -e 'BiocManager::install("org.Hs.eg.db")' && \
+  R -e 'BiocManager::install("org.Mm.eg.db")' && \
   R -e 'BiocManager::install("ballgown")' && \
+  # FIXME: clusterProfiler cannot install on R 4.0.5
+  # R -e 'BiocManager::install("clusterProfiler")' && \
   R -e 'BiocManager::install("DESeq2")' && \
   R -e 'BiocManager::install("EBSeq")' && \
   R -e 'BiocManager::install("edgeR")' && \
+  R -e 'BiocManager::install("GO.db")' && \
   R -e 'BiocManager::install("polyester")' && \
   R -e 'BiocManager::install("tximport")' && \
   R -e 'BiocManager::install("rhdf5")' && \
+  R -e 'BiocManager::install("rtracklayer")' && \
   R -e 'install.packages("devtools")' && \
   R -e 'devtools::install_github("pachterlab/sleuth@v0.30.0")' && \
   ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
